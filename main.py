@@ -7,12 +7,13 @@ import pygame
 pygame.init()
 pygame.display.init()
 
+icon = pygame.image.load("icon.ico")
 win = pygame.window.Window(title="My Game", size=(800, 600), resizable=True)
 
 win.maximize()
 
 screen = win.get_surface()
-
+pygame.display.set_icon(icon)
 running = True
 while running:
     for event in pygame.event.get():
