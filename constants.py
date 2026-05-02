@@ -1,6 +1,8 @@
 from __future__ import annotations
 import pygame
 
+pygame.font.init()
+
 class CapybaraConquestError(Exception):
     def __init__(self, message: str):
         super().__init__(message)
@@ -11,3 +13,7 @@ if __name__ == "__main__":
 
 
 BACKGROUND_COLOR = (237, 199, 154)
+CAPYBARACONQUESTFONT = pygame.font.Font("assets/fonts/Capybara.ttf", 96)
+CAPYBARACONQUESTTITLE = CAPYBARACONQUESTFONT.render("Capybara Conquest", True, (0, 0, 0))
+SCREEN_WIDTH = 1600
+SCREEN_HEIGHT = 1200
