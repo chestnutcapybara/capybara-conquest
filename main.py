@@ -1,3 +1,7 @@
+# WARNING - This game uses pygame-ce, which is NOT normal pygame but uses the same name (pygame)
+# Pygame-CE (Pygame Community Edition) is a fork of the original Pygame library that is actively maintained and has additional features and improvements.
+# You can install it with pip install pygame-ce but make sure you uninstall normal Pygame first (if you have it)
+
 import pygame
 
 pygame.init()
