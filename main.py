@@ -2,6 +2,12 @@ import pygame
 from constants import *
 from functions import *
 
+# Constants
+FONT = pygame.font.Font("assets/fonts/Capybara.ttf", 96)
+
+# Variables
+title = FONT.render("Capybara Conquest", True, (0, 0, 0))
+
 pygame.init()
 pygame.display.init()
 
@@ -16,7 +22,7 @@ win = pygame.window.Window(
 
 # Set the window icon
 win.set_icon(icon)
-
+win.maximize()
 screen = win.get_surface()
 running = True
 
@@ -26,7 +32,7 @@ while running:
             running = False
 
     screen.fill(BACKGROUND_COLOR)
-    screen.blit(CAPYBARACONQUESTTITLE, (SCREEN_WIDTH/2 - CAPYBARACONQUESTTITLE.get_width()/2, 150))
+    screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
     screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, SCREEN_HEIGHT/2 - icon.get_height()/2))
 
     win.flip()

@@ -13,7 +13,5 @@ if __name__ == "__main__":
 
 
 BACKGROUND_COLOR = (237, 199, 154)
-CAPYBARACONQUESTFONT = pygame.font.Font("assets/fonts/Capybara.ttf", 96)
-CAPYBARACONQUESTTITLE = CAPYBARACONQUESTFONT.render("Capybara Conquest", True, (0, 0, 0))
 SCREEN_WIDTH = 1600
 SCREEN_HEIGHT = 1200
