@@ -32,9 +32,8 @@ while running:
             running = False
 
     screen.fill(BACKGROUND_COLOR)
+    screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, -40))
     screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
-    screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, SCREEN_HEIGHT/2 - icon.get_height()/2))
-
     win.flip()
 
 pygame.quit()
