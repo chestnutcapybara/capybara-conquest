@@ -7,7 +7,7 @@ import pygame
 pygame.init()
 pygame.display.init()
 
-win = pygame.window.Window(title="My Game", size=(800, 600), resizable=True)
+win = pygame.window.Window(title="A Capybara's Conquest", size=(800, 600), resizable=True)
 
 win.maximize()
 
