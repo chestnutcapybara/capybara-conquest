@@ -27,7 +27,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill(pygame.Color((255, 255, 255)))
+    screen.fill(BACKGROUND_COLOR)
     win.flip()
 
 pygame.quit()

@@ -8,3 +8,6 @@ class CapybaraConquestError(Exception):
 
 if __name__ == "__main__":
     raise CapybaraConquestError("This file is not meant to be run directly, it contains constants for the game. Please run main.py instead.")
+
+
+BACKGROUND_COLOR = (237, 199, 154)
