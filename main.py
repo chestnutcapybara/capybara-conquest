@@ -3,6 +3,8 @@
 # You can install it with pip install pygame-ce but make sure you uninstall normal Pygame first (if you have it)
 
 import pygame
+from constants import *
+from functions import *
 
 pygame.init()
 pygame.display.init()
@@ -19,9 +21,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill(pygame.Color((255, 255, 255)))
-    
+    screen.fill(pygame.Color((255, 255, 255)))    
 
     win.flip()
-
+    
 pygame.quit()
