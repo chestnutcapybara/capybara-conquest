@@ -1,6 +1,10 @@
+from __future__ import annotations
 import pygame, json, sys
 from pathlib import Path
 from typing import Any
+from constants import *
+if __name__ == "__main__":
+    raise CapybaraConquestError("This file is not meant to be run directly, it contains utility functions for the game. Please run main.py instead.")
 
 def resolve_path(relative_path: str) -> Path:
     if hasattr(sys, "_MEIPASS"):
