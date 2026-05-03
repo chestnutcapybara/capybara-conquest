@@ -24,6 +24,8 @@ win = pygame.window.Window(
 win.set_icon(icon)
 win.maximize()
 screen = win.get_surface()
+SCREEN_HEIGHT = screen.get_height()
+SCREEN_WIDTH = screen.get_width()
 running = True
 
 while running:
@@ -31,9 +33,13 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    SCREEN_HEIGHT = screen.get_height()
+    SCREEN_WIDTH = screen.get_width()
+
     screen.fill(BACKGROUND_COLOR)
     screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, -40))
     screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
+    
     win.flip()
 
 pygame.quit()
