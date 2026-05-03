@@ -1,9 +1,7 @@
 import pygame
 from constants import *
 from functions import *
-
-# Constants
-FONT = pygame.font.Font("assets/fonts/Capybara.ttf", 96)
+from widgets import *
 
 # Variables
 title = FONT.render("Capybara Conquest", True, (0, 0, 0))
@@ -24,6 +22,8 @@ win = pygame.window.Window(
 win.set_icon(icon)
 win.maximize()
 screen = win.get_surface()
+SCREEN_HEIGHT = screen.get_height()
+SCREEN_WIDTH = screen.get_width()
 running = True
 
 while running:
@@ -31,9 +31,16 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    SCREEN_HEIGHT = screen.get_height()
+    SCREEN_WIDTH = screen.get_width()
+    PLAYBUTTON = Button(SCREEN_WIDTH/2 - 150, 400, 400, 120, "Play", FONT, BACKGROUND_COLOR, WHITE, BLACK) #Keep this there so it updates to the new screen width
+    PLAYBUTTON.update(pygame.mouse.get_pos())
+
     screen.fill(BACKGROUND_COLOR)
     screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, -40))
     screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
+    PLAYBUTTON.draw(screen)
+    
     win.flip()
 
 pygame.quit()
