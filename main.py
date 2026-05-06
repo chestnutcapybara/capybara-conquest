@@ -24,7 +24,10 @@ win.maximize()
 screen = win.get_surface()
 SCREEN_HEIGHT = screen.get_height()
 SCREEN_WIDTH = screen.get_width()
+WORLD_PLATFROMS = []
 running = True
+
+WORLD_PLATFROMS.append(("flat-platform-chunk", 0, 0)) #This can be used in world gen
 
 while running:
     for event in pygame.event.get():
@@ -40,7 +43,9 @@ while running:
     screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, -40))
     screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
     PLAYBUTTON.draw(screen)
-    
+    for name, offset_x, offset_y in WORLD_PLATFROMS:
+        draw_tmx(screen, name, offset_x, offset_y)
+
     win.flip()
 
 pygame.quit()

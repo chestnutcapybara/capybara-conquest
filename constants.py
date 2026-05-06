@@ -18,3 +18,4 @@ SCREEN_HEIGHT = 1200
 FONT = pygame.font.Font("assets/fonts/Capybara.ttf", 96)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+TILE_SIZE = 32
