@@ -61,12 +61,11 @@ while running:
         PLAYBUTTON.draw(screen)
         QUITBUTTON.draw(screen)
 
-        for name, offset_x, offset_y in WORLD_PLATFORMS:
-            functions.draw_tmx(screen, name, offset_x, offset_y)
-            
     elif scene_state == "game":
         screen.fill(BACKGROUNDCOLOR)
         # game things here now...?
+        for name, offset_x, offset_y in WORLD_PLATFORMS:
+            functions.draw_tmx(screen, name, offset_x, offset_y)
     
     win.flip()
 
