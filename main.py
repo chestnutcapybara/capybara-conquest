@@ -1,7 +1,8 @@
-import pygame
 from constants import *
-from functions import *
-from widgets import *
+
+import pygame
+import functions
+import widgets
 
 # Variables
 title = FONT.render("Capybara Conquest", True, (0, 0, 0))
@@ -26,20 +27,36 @@ SCREEN_HEIGHT = screen.get_height()
 SCREEN_WIDTH = screen.get_width()
 running = True
 
+scene_state = "menu"
+
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    SCREEN_HEIGHT = screen.get_height()
-    SCREEN_WIDTH = screen.get_width()
-    PLAYBUTTON = Button(SCREEN_WIDTH/2 - 150, 400, 400, 120, "Play", FONT, BACKGROUND_COLOR, WHITE, BLACK) #Keep this there so it updates to the new screen width
-    PLAYBUTTON.update(pygame.mouse.get_pos())
+    if scene_state == "menu":
+        SCREEN_HEIGHT = screen.get_height()
+        SCREEN_WIDTH = screen.get_width()
+        PLAYBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 400, 400, 120, "Play", FONT, BACKGROUNDCOLOR) #Keep this there so it updates to the new screen width
+        QUITBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 550, 400, 120, "Quit", FONT, BACKGROUNDCOLOR)
+        PLAYBUTTON.update(pygame.mouse.get_pos())
+        QUITBUTTON.update(pygame.mouse.get_pos())
+        if PLAYBUTTON.is_clicked(event): #type:ignore
+            scene_state = "game"
+        if QUITBUTTON.is_clicked(event): #type:ignore
+            running = False
+        
+        
 
-    screen.fill(BACKGROUND_COLOR)
-    screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, -40))
-    screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
-    PLAYBUTTON.draw(screen)
+
+        screen.fill(BACKGROUNDCOLOR)
+        screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, -40))
+        screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
+        PLAYBUTTON.draw(screen)
+        QUITBUTTON.draw(screen)
+    elif scene_state == "game":
+        screen.fill(BACKGROUNDCOLOR)
+        # game things here now...?
     
     win.flip()
 

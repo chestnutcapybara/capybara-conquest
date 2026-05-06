@@ -3,13 +3,23 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "flat-platform-chunk.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "capybara-conquest-tiles.tsx": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 0.125,
+            "scaleInEditor": 1
+        },
+        "flat-platform-chunk.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 368.6666666666665,
+                "y": 788.6666666666667
+            }
         }
     },
     "last.imagePath": "C:/Users/hongy/coding/capybara-game/assets/tiles",
@@ -19,9 +29,13 @@
     "map.tileWidth": 128,
     "map.width": 5,
     "openFiles": [
+        "capybara-conquest-tiles.tsx",
+        "flat-platform-chunk.tmx"
     ],
     "project": "capybara-conquest.tiled-project",
     "recentFiles": [
+        "capybara-conquest-tiles.tsx",
+        "flat-platform-chunk.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.type": 1
