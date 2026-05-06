@@ -22,9 +22,15 @@ win = pygame.window.Window(
 # Set the window icon
 win.set_icon(icon)
 win.maximize()
+
 screen = win.get_surface()
+
 SCREEN_HEIGHT = screen.get_height()
 SCREEN_WIDTH = screen.get_width()
+
+WORLD_PLATFORMS = []
+WORLD_PLATFORMS.append(("flat-platform-chunk", 0, 0)) #This can be used in world gen
+
 running = True
 
 scene_state = "menu"
@@ -54,6 +60,10 @@ while running:
         screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
         PLAYBUTTON.draw(screen)
         QUITBUTTON.draw(screen)
+
+        for name, offset_x, offset_y in WORLD_PLATFORMS:
+            functions.draw_tmx(screen, name, offset_x, offset_y)
+            
     elif scene_state == "game":
         screen.fill(BACKGROUNDCOLOR)
         # game things here now...?
