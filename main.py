@@ -3,6 +3,7 @@ from constants import *
 import pygame
 import functions
 import widgets
+from functions import *
 
 # Variables
 title = FONT.render("Capybara Conquest", True, (0, 0, 0))
@@ -28,8 +29,11 @@ screen = win.get_surface()
 SCREEN_HEIGHT = screen.get_height()
 SCREEN_WIDTH = screen.get_width()
 
+# Load TMX maps
 WORLD_PLATFORMS = []
-WORLD_PLATFORMS.append(("flat-platform-chunk", 0, 0)) #This can be used in world gen
+WORLD_PLATFORMS.append(("flat-platform-chunk", 0, 0))
+WORLD_PLATFORMS.append(("ladder-platform-chunk", 300, 300))
+
 
 running = True
 
@@ -47,9 +51,9 @@ while running:
         QUITBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 550, 400, 120, "Quit", FONT, BACKGROUNDCOLOR)
         PLAYBUTTON.update(pygame.mouse.get_pos())
         QUITBUTTON.update(pygame.mouse.get_pos())
-        if PLAYBUTTON.is_clicked(event): #type:ignore
+        if PLAYBUTTON.is_clicked(event):
             scene_state = "game"
-        if QUITBUTTON.is_clicked(event): #type:ignore
+        if QUITBUTTON.is_clicked(event):
             running = False
         
         
@@ -64,8 +68,8 @@ while running:
     elif scene_state == "game":
         screen.fill(BACKGROUNDCOLOR)
         # game things here now...?
-        for name, offset_x, offset_y in WORLD_PLATFORMS:
-            functions.draw_tmx(screen, name, offset_x, offset_y)
+        for tmx_data, offset_x, offset_y in WORLD_PLATFORMS:
+            functions.draw_tmx(screen, tmx_data, offset_x, offset_y)
     
     win.flip()
 

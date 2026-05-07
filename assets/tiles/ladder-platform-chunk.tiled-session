@@ -1,0 +1,25 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "capybara-conquest-tiles.tsx": {
+            "dynamicWrapping": true
+        }
+    },
+    "map.height": 10,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 128,
+    "map.tileWidth": 128,
+    "map.width": 10,
+    "openFiles": [
+    ],
+    "project": "ladder-platform-chunk.tiled-project",
+    "recentFiles": [
+    ]
+}
