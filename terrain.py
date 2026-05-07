@@ -6,8 +6,11 @@ import pytmx
 
 from constants import *
 
+def load_tmx(name: str) -> pytmx.TiledMap:
+    return load_pygame(f"assets/tiles/{name}.tmx")
+
 def draw_tmx(screen,name: str,offset_x: int, offset_y: int):
-    tmx_data = load_pygame(f"assets/tiles/{name}.tmx")
+    tmx_data = load_tmx(name)
     for layer in tmx_data.visible_layers:
         if isinstance(layer, pytmx.TiledTileLayer):
             for x, y, gid in layer.tiles():

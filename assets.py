@@ -12,3 +12,4 @@ def resolve_path(relative_path: str) -> Path:
     return base_path / Path(relative_path)
 
 class LoadAssets:
+    pass
