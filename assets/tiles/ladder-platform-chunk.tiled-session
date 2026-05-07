@@ -3,13 +3,23 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "ladder-platform-chunk.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "capybara-conquest-tiles.tsx": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "ladder-platform-chunk.tmx": {
+            "scale": 0.7941406249999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 475.98622725036887,
+                "y": 640.3148057058535
+            }
         }
     },
     "map.height": 10,
@@ -18,8 +28,12 @@
     "map.tileWidth": 128,
     "map.width": 10,
     "openFiles": [
+        "ladder-platform-chunk.tmx",
+        "capybara-conquest-tiles.tsx"
     ],
     "project": "ladder-platform-chunk.tiled-project",
     "recentFiles": [
+        "capybara-conquest-tiles.tsx",
+        "ladder-platform-chunk.tmx"
     ]
 }

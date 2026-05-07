@@ -49,6 +49,8 @@ while running:
         SCREEN_WIDTH = screen.get_width()
         PLAYBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 400, 400, 120, "Play", FONT, BACKGROUNDCOLOR) #Keep this there so it updates to the new screen width
         QUITBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 550, 400, 120, "Quit", FONT, BACKGROUNDCOLOR)
+        #Keep the following line for resizablitlty reasons
+        FIELD_BACKGROUND = pygame.transform.scale(pygame.image.load("assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
         PLAYBUTTON.update(pygame.mouse.get_pos())
         QUITBUTTON.update(pygame.mouse.get_pos())
         if PLAYBUTTON.is_clicked(event):
@@ -56,17 +58,14 @@ while running:
         if QUITBUTTON.is_clicked(event):
             running = False
         
-        
-
-
-        screen.fill(BACKGROUNDCOLOR)
+        screen.blit(FIELD_BACKGROUND, (0, 0))
         screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, -40))
         screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
         PLAYBUTTON.draw(screen)
         QUITBUTTON.draw(screen)
 
     elif scene_state == "game":
-        screen.fill(BACKGROUNDCOLOR)
+        FIELD_BACKGROUND = pygame.transform.scale(pygame.image.load("assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
         # game things here now...?
         for tmx_data, offset_x, offset_y in WORLD_PLATFORMS:
             functions.draw_tmx(screen, tmx_data, offset_x, offset_y)

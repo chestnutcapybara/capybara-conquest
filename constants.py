@@ -14,6 +14,7 @@ if __name__ == "__main__":
 BACKGROUNDCOLOR = (237, 199, 154)
 SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 900
+FIELD_BACKGROUND = pygame.transform.scale(pygame.image.load("assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
 FONT = pygame.font.Font("assets/fonts/Capybara.ttf", 96)
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
