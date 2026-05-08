@@ -67,6 +67,7 @@ while running:
 
     elif scene_state == "game":
         FIELD_BACKGROUND = pygame.transform.scale(pygame.image.load("assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
+        screen.blit(FIELD_BACKGROUND, (0, 0))
         # game things here now...?
         for tmx_data, offset_x, offset_y in WORLD_PLATFORMS:
             terrain.draw_tmx(screen, tmx_data, offset_x, offset_y)
