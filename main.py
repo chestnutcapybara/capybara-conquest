@@ -5,6 +5,7 @@ import functions
 import widgets
 import functions
 import terrain
+import assets
 
 # Variables
 title = FONT.render("Capybara Conquest", True, (0, 0, 0))
@@ -35,6 +36,8 @@ WORLD_PLATFORMS = []
 WORLD_PLATFORMS.append(("flat-platform-chunk", 0, 0))
 WORLD_PLATFORMS.append(("ladder-platform-chunk", 300, 300))
 
+#@Heres the bug
+AssetManager = assets.AssetManager()
 
 running = True
 
@@ -51,7 +54,7 @@ while running:
         PLAYBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 400, 400, 120, "Play", FONT, BACKGROUNDCOLOR) #Keep this there so it updates to the new screen width
         QUITBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 550, 400, 120, "Quit", FONT, BACKGROUNDCOLOR)
         #Keep the following line for resizablitlty reasons
-        FIELD_BACKGROUND = pygame.transform.scale(pygame.image.load("assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
+        FIELD_BACKGROUND = pygame.transform.scale(AssetManager.load_image("Field Background","assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
         PLAYBUTTON.update(pygame.mouse.get_pos())
         QUITBUTTON.update(pygame.mouse.get_pos())
         if PLAYBUTTON.is_clicked(event):
@@ -66,7 +69,7 @@ while running:
         QUITBUTTON.draw(screen)
 
     elif scene_state == "game":
-        FIELD_BACKGROUND = pygame.transform.scale(pygame.image.load("assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
+        FIELD_BACKGROUND = pygame.transform.scale(AssetManager.load_image("Field Background", "assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
         screen.blit(FIELD_BACKGROUND, (0, 0))
         # game things here now...?
         for tmx_data, offset_x, offset_y in WORLD_PLATFORMS:
