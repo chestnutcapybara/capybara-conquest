@@ -58,7 +58,7 @@ while running:
             scene_state = "game"
         if QUITBUTTON.is_clicked(event):
             running = False
-        
+
         screen.blit(FIELD_BACKGROUND, (0, 0))
         screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, -40))
         screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
@@ -71,7 +71,7 @@ while running:
         # game things here now...?
         for tmx_data, offset_x, offset_y in WORLD_PLATFORMS:
             terrain.draw_tmx(screen, tmx_data, offset_x, offset_y)
-    
+
     win.flip()
 
 pygame.quit()
