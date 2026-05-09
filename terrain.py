@@ -1,3 +1,7 @@
+'''
+ --- terrain.py ---
+ This module includes functions related to loading and drawing TMX maps created in Tiled, using PyTMX. '''
+
 from __future__ import annotations
 from pytmx.util_pygame import load_pygame
 
@@ -7,9 +11,11 @@ import pytmx
 from constants import *
 
 def load_tmx(name: str) -> pytmx.TiledMap:
+    ''' Returns a Tiled Map object loaded using PyTMX load_pygame function. '''
     return load_pygame(f"assets/tiles/{name}.tmx")
 
 def draw_tmx(screen,name: str,offset_x: int, offset_y: int):
+    ''' Draws a TMX map onto the Pygame screen. '''
     tmx_data = load_pygame(f"assets/tiles/{name}.tmx")
     for layer in tmx_data.visible_layers:
         if isinstance(layer, pytmx.TiledTileLayer):
