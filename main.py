@@ -54,7 +54,7 @@ while running:
         PLAYBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 400, 400, 120, "Play", FONT, BACKGROUNDCOLOR) #Keep this there so it updates to the new screen width
         QUITBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 550, 400, 120, "Quit", FONT, BACKGROUNDCOLOR)
         #Keep the following line for resizablitlty reasons
-        FIELD_BACKGROUND = pygame.transform.scale(pygame.image.load("assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
+        FIELD_BACKGROUND = pygame.transform.scale(AssetManager.load_image("Field Background","assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
         PLAYBUTTON.update(pygame.mouse.get_pos())
         QUITBUTTON.update(pygame.mouse.get_pos())
         if PLAYBUTTON.is_clicked(event):
