@@ -1,3 +1,10 @@
+'''
+ --- main.py ---
+This is the main file for Capybara Conquest. It is the heart and soul of the game.
+'''
+
+# Imports
+from __future__ import annotations
 from constants import *
 
 import pygame
@@ -36,7 +43,6 @@ WORLD_PLATFORMS = []
 WORLD_PLATFORMS.append(("flat-platform-chunk", 0, 0))
 WORLD_PLATFORMS.append(("ladder-platform-chunk", 300, 300))
 
-#@Heres the bug
 AssetManager = assets.AssetManager()
 
 running = True
