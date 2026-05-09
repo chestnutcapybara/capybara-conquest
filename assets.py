@@ -3,6 +3,59 @@ from __future__ import annotations
 import pygame
 from pathlib import Path
 
+class SpriteSheet:
+    def __init__(self, image: pygame.Surface):
+        self.sheet = image
+
+    def cut(
+        self,
+        x: int,
+        y: int,
+        width: int,
+        height: int,
+    ) -> pygame.Surface:
+
+        sprite = pygame.Surface((width, height), pygame.SRCALPHA)
+
+        sprite.blit(
+            self.sheet,
+            (0, 0),
+            (x, y, width, height),
+        )
+
+        return sprite.convert_alpha()
+
+    def cut_strip(
+        self,
+        start_x: int,
+        y: int,
+        width: int,
+        height: int,
+        amount: int,
+    ) -> list[pygame.Surface]:
+        """
+        Cuts sprites lined up horizontally.
+
+        Example:
+        [sprite][sprite][sprite][sprite][ sprite][chestnutcapybara]
+        """
+
+        sprites = []
+
+        for i in range(amount):
+            x = start_x + (i * width)
+
+            sprite = self.cut(
+                x,
+                y,
+                width,
+                height,
+            )
+
+            sprites.append(sprite)
+
+        return sprites
+    
 
 class AssetManager:
     def __init__(self):
