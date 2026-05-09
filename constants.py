@@ -1,9 +1,15 @@
+'''
+ --- constants.py ---
+This module includes constants that are used throughout the game, such as colors, screen dimensions, and other important values.
+It also includes a custom error class CapybaraConquestError which is used to raise errors
+'''
 from __future__ import annotations
 import pygame
 
 pygame.font.init()
 
 class CapybaraConquestError(Exception):
+    ''' Custom error class for Capybara Conquest, inherits from the standard Exception class. '''
     def __init__(self, message: str):
         super().__init__(message)
         self.message = message

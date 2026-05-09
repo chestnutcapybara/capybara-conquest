@@ -1,9 +1,16 @@
-from __future__ import annotations
+'''
+ --- assets.py ---
+This module includes the classes SpriteSheet and AssetManager which are used to manage assets such as images and animations.
+AssetManager is used to load and store images in a cache, so that they can be easily reused without having to load them from disk multiple times.
+'''
 
+# Imports
+from __future__ import annotations
 import pygame
 from pathlib import Path
 
 class SpriteSheet:
+    ''' The SpriteSheet class which is used to slice and dice sprite sheets into individual sprites '''
     def __init__(self, image: pygame.Surface):
         self.sheet = image
 
@@ -14,7 +21,7 @@ class SpriteSheet:
         width: int,
         height: int,
     ) -> pygame.Surface:
-
+        ''' Cuts a sprite from the sprite sheet (most basic cutting method) '''
         sprite = pygame.Surface((width, height), pygame.SRCALPHA)
 
         sprite.blit(
@@ -33,12 +40,7 @@ class SpriteSheet:
         height: int,
         amount: int,
     ) -> list[pygame.Surface]:
-        """
-        Cuts sprites lined up horizontally.
-
-        Example:
-        [sprite][sprite][sprite][sprite][ sprite][chestnutcapybara]
-        """
+        """ Cuts sprites lined up horizontally: ie, [capybara1, capybara2, capybara3, ...] """
 
         sprites = []
 
@@ -58,6 +60,7 @@ class SpriteSheet:
     
 
 class AssetManager:
+    ''' Grandmaster class of Asset Management, used to load and store images in a cache.'''
     def __init__(self):
         # Stores already-loaded images
         self.assets: dict[str, pygame.Surface] = {}
@@ -68,9 +71,8 @@ class AssetManager:
         path: str | Path,
         convert_alpha: bool = True,
     ) -> pygame.Surface:
-        # Loads a image and stores it in Asset Manager Cache
-        # If image exists in cache already... then just return the cached version instead of loading it again
-
+        ''' Most fundemental function of Asset Manager. Checks if image is already loaded, if not, loads it and stores it in the cache. '''
+        
         # Return cached version if already loaded
         if name in self.assets:
             return self.assets[name]
@@ -87,7 +89,7 @@ class AssetManager:
         return image
 
     def get_image(self, name: str) -> pygame.Surface:
-        # gets an image from the cache
+        ''' Acquires an image from the cache and raises KeyError if image is not in cache.'''
 
         if name not in self.assets:
             raise KeyError(f'Image "{name}" has not been loaded.')
@@ -95,13 +97,12 @@ class AssetManager:
         return self.assets[name]
 
     def unload_image(self, name: str) -> None:
-        # unloads an image from the cache
-        #removes RAM usage by deleting the image from the cache
+        ''' Unloads an image from the cache, making the RAM usage less after it is garbage collected by Python. '''
 
         if name in self.assets:
             del self.assets[name]
 
     def clear(self) -> None:
-        # DELETES ALL THINGS FROM THE CACHE
+        ''' Kicks everything out of the cache. Use at your own risk!!! >:) '''
 
         self.assets.clear()
