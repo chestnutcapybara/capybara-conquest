@@ -13,15 +13,14 @@ from constants import *
 if __name__ == "__main__":
     raise CapybaraConquestError("This file is not meant to be run directly, it contains utility functions for the game. Please run main.py instead.")
 
-def resolve_path(relative_path: str) -> Path:
-    if hasattr(sys, "_MEIPASS"):
-        # PyInstaller creates a temp folder and stores path in _MEIPASS
-        base_path = Path(getattr(sys, "_MEIPASS"))
-    else:
-        # In development, use the current working directory
-        base_path = Path(".").resolve()
 
-    return base_path / Path(relative_path)
+def resolve_path(relative_path: str) -> Path:
+    if getattr(sys, "frozen", False):
+        base_path = Path(sys.argv[0]).resolve().parent
+    else:
+        base_path = Path(__file__).resolve().parent
+
+    return base_path / relative_path
 
 def load_font(path: str, font_size: int) -> pygame.font.Font:
     try:
