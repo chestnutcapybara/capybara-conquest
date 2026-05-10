@@ -7,6 +7,9 @@ build/
 dist/
 *.egg-info/
 
+main.build/
+main.bin
+main.dist
 
 __pycache__/
 *.pyc
