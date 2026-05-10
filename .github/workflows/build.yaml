@@ -1,37 +1,72 @@
-name: Compile Game
+name: Compile Game & Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*" # ONLY triggers when a tag is pushed that starts with "v"
+
   workflow_dispatch:
 
 jobs:
   build-windows:
-      runs-on: windows-latest
+    runs-on: windows-latest
 
-      steps:
-        - name: Checkout Repo
-          uses: actions/checkout@v3
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
 
-        - name: Install Python
-          uses: actions/setup-python@v5
-          with:
-            python-version: '3.13'
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
 
-        - name: Install Dependencies
-          run: |
-            python -m pip install --upgrade pip
-            pip install -r requirements.txt
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install nuitka
 
-        - name: Build game
-          run: |
-            python -m nuitka `
+      - name: Build Game
+        run: |
+          python -m nuitka `
             --standalone `
             --onefile `
+            --include-data-dir=assets=assets `
             --windows-console-mode=disable `
+            --assume-yes-for-downloads `
             --output-dir=dist/windows `
             main.py
 
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: dist/windows/**/*.exe
+
+  create-release:
+    needs: build-windows
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    if: startsWith(github.ref, 'refs/tags/')
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-build
+          path: release-files
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: release_notes.md
+          files: release-files/**/*.exe
                 
         
