@@ -24,14 +24,14 @@ jobs:
             python -m pip install --upgrade pip
             pip install -r requirements.txt
 
-        - name: Build Game
+        - name: Build game
           run: |
-            python -m nuitka ^
-              --standalone ^
-              --onefile ^
-              --windows-console-mode=disable ^
-              --output-dir=dist/windows ^
-              main.py
-              
+            python -m nuitka `
+            --standalone `
+            --onefile `
+            --windows-console-mode=disable `
+            --output-dir=dist/windows `
+            main.py
+
                 
         
