@@ -6,7 +6,7 @@ This module includes the class Animation which is a fully functional animation s
 
 # Imports
 from __future__ import annotations
-import pygame
+import pygame  # type: ignore
 from constants import *
 
 class Animation:
