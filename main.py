@@ -34,6 +34,8 @@ win.set_icon(icon)
 win.maximize()
 
 screen = win.get_surface()
+clock = pygame.time.Clock()
+FPS = 60
 
 SCREEN_HEIGHT = screen.get_height()
 SCREEN_WIDTH = screen.get_width()
@@ -50,9 +52,13 @@ running = True
 scene_state = "menu"
 
 while running:
+
+    dt = clock.tick(FPS) / 1000  # Delta time in seconds.
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+    
 
     if scene_state == "menu":
         SCREEN_HEIGHT = screen.get_height()
