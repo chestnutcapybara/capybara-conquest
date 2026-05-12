@@ -8,8 +8,8 @@ dist/
 *.egg-info/
 
 main.build/
-main.bin
-main.dist
+main.bin/
+main.dist/
 
 __pycache__/
 *.pyc
