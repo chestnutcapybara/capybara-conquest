@@ -6,6 +6,7 @@ AssetManager is used to load and store images in a cache, so that they can be ea
 
 # Imports
 from __future__ import annotations
+from unicodedata import name
 import pygame
 from pathlib import Path
 
@@ -58,12 +59,23 @@ class SpriteSheet:
 
         return sprites
     
+##################
+## Asset Manager #
+##################
 
 class AssetManager:
-    ''' Grandmaster class of Asset Management, used to load and store images in a cache.'''
+    ''' ### Grandmaster class of Asset Management, used to load and store images in a cache.
+
+        METHODS: load_image, get_image, unload_image, clear
+        
+    '''
     def __init__(self):
         # Stores already-loaded images
-        self.assets: dict[str, pygame.Surface] = {}
+        self.assets: dict[str, pygame.Surface | list[pygame.Surface]] = {}
+
+    ######################
+    ## Image Management ##
+    ######################
 
     def load_image(
         self,
@@ -101,6 +113,55 @@ class AssetManager:
 
         if name in self.assets:
             del self.assets[name]
+
+    def flip(
+    self,
+    source,
+    name: str,
+    flip_x: bool = True,
+    flip_y: bool = False,
+) -> pygame.Surface | list[pygame.Surface]:
+        ''' Flips and caches images or animation frames '''
+
+        flipped_name = f'{name}_flip_{flip_x}_{flip_y}'
+
+        # Return cached version
+        if flipped_name in self.assets:
+            return self.assets[flipped_name]
+
+        # Single image
+        if isinstance(source, pygame.Surface):
+            flipped = pygame.transform.flip(
+            source,
+            flip_x,
+            flip_y,
+            )
+
+        # Animation frames
+        elif isinstance(source, list):
+            flipped = [
+            pygame.transform.flip(
+                frame,
+                flip_x,
+                flip_y,
+            )
+            for frame in source
+            ]
+
+        else:
+            raise TypeError(
+                'Source must be pygame.Surface or list[pygame.Surface]'
+            )
+
+        # Cache result
+        self.assets[flipped_name] = flipped
+
+        return flipped
+
+
+    #####################
+    ## Utility Methods ##
+    #####################
 
     def clear(self) -> None:
         ''' Kicks everything out of the cache. Use at your own risk!!! >:) '''
