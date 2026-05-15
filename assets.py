@@ -6,6 +6,7 @@ AssetManager is used to load and store images in a cache, so that they can be ea
 
 # Imports
 from __future__ import annotations
+from typing import cast
 from unicodedata import name
 import pygame
 from pathlib import Path
@@ -100,8 +101,8 @@ class AssetManager:
         self.assets[name] = image
         return image
 
-    def get_image(self, name: str) -> pygame.Surface:
-        ''' Acquires an image from the cache and raises KeyError if image is not in cache.'''
+    def get_image(self, name: str) -> pygame.Surface | list[pygame.Surface]:
+        ''' Acquires an image or animation frames from the cache and raises KeyError if the asset is not in cache.'''
 
         if name not in self.assets:
             raise KeyError(f'Image "{name}" has not been loaded.')
