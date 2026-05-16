@@ -53,14 +53,12 @@ running = True
 
 scene_state = "menu"
 
+PLAYBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 400, 400, 120, "Play", FONT, BACKGROUNDCOLOR)
+QUITBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 550, 400, 120, "Quit", FONT, BACKGROUNDCOLOR)
+
 while running:
 
     dt = clock.tick(FPS) / 1000  # Delta time in seconds.
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-
-    
 
     if scene_state == "menu":
         SCREEN_HEIGHT = screen.get_height()
@@ -68,14 +66,20 @@ while running:
         PLAYBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 400, 400, 120, "Play", FONT, BACKGROUNDCOLOR) #Keep this there so it updates to the new screen width
         QUITBUTTON = widgets.Button(SCREEN_WIDTH/2 - 150, 550, 400, 120, "Quit", FONT, BACKGROUNDCOLOR)
         #Keep the following line for resizablitlty reasons
-        FIELD_BACKGROUND = pygame.transform.scale(asset_manager.load_image("Field Background","assets/images/capybara-conquest-field-background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
+        FIELD_BACKGROUND = pygame.transform.scale(asset_manager.load_image("Forest Background","assets/images/Forest-Background.png"), (SCREEN_WIDTH, SCREEN_HEIGHT))
         PLAYBUTTON.update(pygame.mouse.get_pos())
         QUITBUTTON.update(pygame.mouse.get_pos())
-        if PLAYBUTTON.is_clicked(event):
-            scene_state = "game"
-        if QUITBUTTON.is_clicked(event):
-            running = False
 
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif scene_state == "menu":
+            if PLAYBUTTON.is_clicked(event):
+                scene_state = "game"
+            if QUITBUTTON.is_clicked(event):
+                running = False
+
+    if scene_state == "menu":
         screen.blit(FIELD_BACKGROUND, (0, 0))
         screen.blit(icon, (SCREEN_WIDTH/2 - icon.get_width()/2, -40))
         screen.blit(title, (SCREEN_WIDTH/2 - title.get_width()/2, 150))
